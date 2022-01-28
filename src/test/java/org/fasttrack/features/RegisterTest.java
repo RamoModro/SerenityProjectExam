@@ -1,6 +1,7 @@
 package org.fasttrack.features;
 
 import net.bytebuddy.utility.RandomString;
+import org.fasttrack.utils.Constants;
 import org.junit.Test;
 
 public class RegisterTest extends BaseTest {
@@ -10,9 +11,8 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void registerNewUser(){
-    registerSteps.clickLoginButton();
-    registerSteps.enterCredentials();
+    registerSteps.goToRegistration();
+    registerSteps.enterCredentials(random+"email", Constants.USER_PASS);
     registerSteps.clickRegisterButton();
-    registerSteps.checkNewUserIsLoggedIn(random);
     }
 }

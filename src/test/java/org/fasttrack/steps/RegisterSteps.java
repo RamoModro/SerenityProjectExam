@@ -6,24 +6,19 @@ import org.junit.Assert;
 public class RegisterSteps extends BaseSteps {
 
     @Step
-    public void clickLoginButton() {
-        homePage.clickLoginButton();
+    public void goToRegistration() {
+        homePage.clickMyAccountButton();
     }
 
     @Step
-    public void enterCredentials() {
+    public void enterCredentials(String email, String pass) {
         homePage.setEmailField(random + "email");
         homePage.setPasswordField("Fasttrack123@");
     }
-
     @Step
-    public void clickRegisterButton() {
+    public void clickRegisterButton(){
         homePage.clickRegisterButton();
     }
 
-    @Step
-    public void checkNewUserIsLoggedIn(String userName){
-        myAccountPage.checkUserLoggedInText(userName);
-    }
 }
 

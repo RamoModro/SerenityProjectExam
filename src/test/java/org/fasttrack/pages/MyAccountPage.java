@@ -10,10 +10,18 @@ import org.junit.Assert;
 public class MyAccountPage extends BasePage {
 
     @FindBy(css = ".woocommerce-MyAccount-content p")
-    private WebElementFacade welcomeRegisterText;
+    private WebElementFacade helloText;
 
-    public void checkUserLoggedInText(String userName) {
-        welcomeRegisterText.shouldContainOnlyText("Hello" + userName + " (not" + userName + "? Log out)");
+    @FindBy(css = ".woocommerce-MyAccount-content a")
+    private WebElementFacade logOutLink;
+
+    public void checkUserLoggedIn(String userName) {
+        Assert.assertTrue("Hello " + userName + "(not " + userName + "? Log out)", true);
+    }
+
+    public void clickLogOut(){
+        clickOn(logOutLink);
     }
 
     }
+

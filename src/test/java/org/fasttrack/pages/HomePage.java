@@ -8,34 +8,78 @@ import java.time.Duration;
 
 public class HomePage extends BasePage {
 
-    @FindBy(css = ".login-woocommerce a")
-    private WebElementFacade loginButton;
+    @FindBy(css = ".menu .menu-item-70")
+    private WebElementFacade myAccountButton;
 
     @FindBy(id = "reg_email")
-    private WebElementFacade emailField;
+    private WebElementFacade regEmailField;
 
     @FindBy(id = "reg_password")
-    private WebElementFacade passwordField;
+    private WebElementFacade regPasswordField;
 
     @FindBy(css = ".woocommerce-Button[value='Register']")
     private WebElementFacade registerButton;
 
-    public void clickLoginButton() {
-        clickOn(loginButton);
+    @FindBy(id = "username")
+    private WebElementFacade usernameField;
+
+    @FindBy(id = "password")
+    private WebElementFacade loginPasswordField;
+
+    @FindBy(css = ".woocommerce-Button[name=\"login\"]")
+    private WebElementFacade loginButton;
+
+    @FindBy(id="mastheads")
+    private WebElementFacade siteHeader;
+
+    @FindBy(className = "search-field")
+    private WebElementFacade searchField;
+
+    @FindBy(className = "searchsubmit")
+    private WebElementFacade searchButton;
+
+
+    public void clickMyAccountButton(){
+        clickOn(myAccountButton);
     }
 
     public void setEmailField(String mail) {
         //waitFor(emailField);
         //withTimeoutOf(Duration.ofSeconds(10)).waitFor(emailField);
-        String email = RandomStringUtils.randomAlphanumeric(15)+"@email.com";
-        typeInto(emailField, email);
+        String email = RandomStringUtils.randomAlphanumeric(10)+"@email.com";
+        typeInto(regEmailField, email);
     }
 
     public void setPasswordField(String pass){
-        typeInto(passwordField, pass);
+        typeInto(regPasswordField, pass);
     }
 
     public void clickRegisterButton(){
         clickOn(registerButton);
     }
+
+    public void setUsernameField(String username){
+        typeInto(usernameField, username);
+    }
+
+    public void setLoginPasswordField(String pass){
+        typeInto(loginPasswordField, pass);
+    }
+
+    public void clickLoginButton(){
+        clickOn(loginButton);
+    }
+
+    public boolean isLoggedOut(){
+        return !siteHeader.containsText("Hello");
+    }
+
+    public void setSearchField(String value){
+        typeInto(searchField, value);
+    }
+
+    public void clickSearchButton(){
+        clickOn(searchButton);
+    }
+
 }
