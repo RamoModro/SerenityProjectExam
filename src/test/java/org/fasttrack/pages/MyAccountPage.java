@@ -9,14 +9,14 @@ import org.junit.Assert;
 
 public class MyAccountPage extends BasePage {
 
-    @FindBy(css = ".woocommerce-MyAccount-content p")
+    @FindBy(css = ".woocommerce-MyAccount-content p:first-child")
     private WebElementFacade helloText;
 
     @FindBy(css = ".woocommerce-MyAccount-content a")
     private WebElementFacade logOutLink;
 
     public void checkUserLoggedIn(String userName) {
-        Assert.assertTrue("Hello " + userName + "(not " + userName + "? Log out)", true);
+       helloText.shouldContainText("Hello " + userName + " (not " + userName + "?"+ " Log out)");
     }
 
     public void clickLogOut(){

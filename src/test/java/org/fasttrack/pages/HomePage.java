@@ -39,6 +39,7 @@ public class HomePage extends BasePage {
     private WebElementFacade searchButton;
 
 
+
     public void clickMyAccountButton(){
         clickOn(myAccountButton);
     }
@@ -46,8 +47,7 @@ public class HomePage extends BasePage {
     public void setEmailField(String mail) {
         //waitFor(emailField);
         //withTimeoutOf(Duration.ofSeconds(10)).waitFor(emailField);
-        String email = RandomStringUtils.randomAlphanumeric(10)+"@email.com";
-        typeInto(regEmailField, email);
+        typeInto(regEmailField, mail);
     }
 
     public void setPasswordField(String pass){

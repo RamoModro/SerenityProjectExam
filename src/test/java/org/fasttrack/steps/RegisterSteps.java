@@ -12,12 +12,18 @@ public class RegisterSteps extends BaseSteps {
 
     @Step
     public void enterCredentials(String email, String pass) {
-        homePage.setEmailField(random + "email");
-        homePage.setPasswordField("Fasttrack123@");
+        homePage.setEmailField(email);
+        homePage.setPasswordField(pass);
     }
     @Step
     public void clickRegisterButton(){
         homePage.clickRegisterButton();
+    }
+
+    @Step
+    public void checkUserIsLoggedInOrRegistered(String userName){
+        myAccountPage.checkUserLoggedIn(userName);
+
     }
 
 }

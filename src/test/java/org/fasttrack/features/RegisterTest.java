@@ -12,7 +12,8 @@ public class RegisterTest extends BaseTest {
     @Test
     public void registerNewUser(){
     registerSteps.goToRegistration();
-    registerSteps.enterCredentials(random+"email", Constants.USER_PASS);
+    registerSteps.enterCredentials(random+"@email.com", Constants.USER_PASS);
     registerSteps.clickRegisterButton();
+    registerSteps.checkUserIsLoggedInOrRegistered(random);
     }
 }

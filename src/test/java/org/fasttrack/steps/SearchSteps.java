@@ -33,4 +33,5 @@ public class SearchSteps extends BaseSteps{
         executeSearch(productName);
         findAndOpenProduct(productName);
     }
+
 }
