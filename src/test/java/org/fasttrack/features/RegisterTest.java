@@ -10,10 +10,19 @@ public class RegisterTest extends BaseTest {
     String random = randomString.nextString();
 
     @Test
-    public void registerNewUser(){
-    registerSteps.goToRegistration();
-    registerSteps.enterCredentials(random+"@email.com", Constants.USER_PASS);
-    registerSteps.clickRegisterButton();
-    registerSteps.checkUserIsLoggedInOrRegistered(random);
+    public void registerNewUserTest() {
+        registerSteps.goToRegistration();
+        registerSteps.enterCredentials(random + "@email.com", Constants.USER_PASS);
+        registerSteps.clickRegisterButton();
+        registerSteps.checkUserIsLoggedInOrRegistered(random);
+    }
+
+    @Test
+    public void checkUserIsInAdminUserList() {
+        loginSteps.navigateToAdminHomePage();
+        loginSteps.performAdminLogin(Constants.ADMIN_EMAIL, Constants.ADMIN_PASS);
+        adminSteps.openUsersPage();
+        adminSteps.searchUserInAdminUsersPage(Constants.USER_NAME);
+        adminSteps.verifyTextInBodyList(Constants.USER_NAME);
     }
 }

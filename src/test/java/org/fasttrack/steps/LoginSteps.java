@@ -43,4 +43,11 @@ public class LoginSteps extends BaseSteps{
         enterCredentials(user,pass);
         clickLoginButton();
     }
+
+    @Step
+    public void performAdminLogin(String user, String pass){
+        loginPage.setLoginUserNameOrEmailAddressField(user);
+        loginPage.setLoginPasswordField(pass);
+        loginPage.clickLoginButton();
+    }
 }

@@ -13,6 +13,12 @@ public class BaseSteps extends ScenarioSteps {
     public SearchResultsPage searchResultsPage;
     public ProductPage productPage;
     public CartPage cartPage;
+    public CheckoutPage checkoutPage;
+    public LoginPage loginPage;
+    public HomePageAdmin homePageAdmin;
+    public AdminOrdersPage adminOrdersPage;
+    public AdminCouponsPage adminCouponsPage;
+    public AdminUsersPage adminUsersPage;
 
     RandomString randomString = new RandomString();
     String random = randomString.nextString();

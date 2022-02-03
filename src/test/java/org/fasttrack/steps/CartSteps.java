@@ -64,4 +64,32 @@ public class CartSteps extends BaseSteps {
     public void waitForTextToAppear(String text){
         cartPage.waitForTextToAppearInCart(text);
     }
+
+    @Step
+    public void clickCheckoutButton(){
+        cartPage.clickOnCheckoutButton();
+    }
+
+    @Step
+    public void useCouponCode(String couponCode){
+        cartPage.enterCouponCode(couponCode);
+        cartPage.clickApplyCouponButton();
+    }
+
+    @Step
+    public void verifyCouponCodeIsDisplayedInCartTotals(String couponCode){
+        Assert.assertTrue("The discount amount is not visible in cart",cartPage.verifyCouponCodeIsDisplayedInCartTotals(couponCode));
+    }
+
+    @Step
+    public void cartTotalCalculation(){
+        cartPage.getCartSubtotal();
+        cartPage.getCartDiscountValue();
+        cartPage.getCartTotalValue();
+    }
+
+    @Step
+    public void verifyCartTotalCalculationWithDiscount(){
+        Assert.assertTrue("The total after coupon code applied is not calculated correct",cartPage.verifyCartTotalCalculationWithDiscount());
+    }
 }

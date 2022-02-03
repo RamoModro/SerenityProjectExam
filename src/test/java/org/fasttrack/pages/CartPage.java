@@ -35,6 +35,27 @@ public class CartPage extends BasePage{
     @FindBy(css = ".restore-item")
     private WebElementFacade undoRemoveItemFromCartLink;
 
+    @FindBy(css = ".checkout-button")
+    private WebElementFacade checkoutButton;
+
+    @FindBy(id = "coupon_code")
+    private WebElementFacade couponCodeField;
+
+    @FindBy(css = "[name='apply_coupon']")
+    private WebElementFacade applyCouponButton;
+
+    @FindBy(css = ".cart_totals")
+    private WebElementFacade cartTotalsContainer;
+
+    @FindBy(css = ".cart-subtotal td")
+    private WebElementFacade cartSubtotal;
+
+    @FindBy(css = ".order-total td")
+    private WebElementFacade cartTotal;
+
+    @FindBy(css = ".cart-discount td")
+    private WebElementFacade cartDiscount;
+
     public boolean isProductInCart(String productName) {
         for (WebElementFacade element : cartProductNames) {
             if (element.getText().contains(productName)) {
@@ -108,6 +129,43 @@ public class CartPage extends BasePage{
 
     public void waitForTextToAppearInCart(String text) {
         waitForTextToAppear(cartContainer, text);
+    }
+
+    public void clickOnCheckoutButton(){
+        clickOn(checkoutButton);
+    }
+
+    public void enterCouponCode(String couponCode) {
+        typeInto(couponCodeField, couponCode);
+    }
+
+    public void clickApplyCouponButton(){
+        clickOn(applyCouponButton);
+    }
+
+    public boolean verifyCouponCodeIsDisplayedInCartTotals(String couponCode) {
+        return cartTotalsContainer.containsText(couponCode);
+    }
+
+    private Integer cartSubtotalValue;
+    public void getCartSubtotal() {
+        cartSubtotalValue = Integer.parseInt(cartSubtotal.getText().replace("lei", "").replace(".", ""));
+    }
+
+    private Integer cartDiscountValue;
+    public void getCartDiscountValue(){
+        cartDiscountValue = cartDiscountValue.valueOf(cartDiscount.getText().replaceAll("[^0-9]",""));
+    }
+
+    private Integer cartTotalValue;
+    public void getCartTotalValue(){
+        cartTotalValue = Integer.parseInt(cartTotal.getText().replace("lei","").replace(".", ""));
+    }
+
+    private Integer calculatedCartTotal;
+    public boolean verifyCartTotalCalculationWithDiscount(){
+        calculatedCartTotal = cartSubtotalValue - cartDiscountValue;
+        return calculatedCartTotal.equals(cartTotalValue);
     }
 
 }
