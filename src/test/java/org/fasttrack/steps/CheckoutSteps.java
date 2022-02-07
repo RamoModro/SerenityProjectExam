@@ -11,7 +11,6 @@ public class CheckoutSteps extends BaseSteps{
     }
 
     String orderNumberValue;
-
     public String getOrderNumberValue(){
         return orderNumberValue;
     }
