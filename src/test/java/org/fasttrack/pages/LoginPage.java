@@ -14,6 +14,9 @@ public class LoginPage extends BasePage{
     @FindBy(id = "wp-submit")
     private WebElementFacade loginButton;
 
+    @FindBy(className = "woocommerce-error")
+    private WebElementFacade erroMessageSpan;
+
     public void setLoginUserNameOrEmailAddressField(String user){
         typeInto(loginUserNameField, user);
     }
@@ -24,5 +27,9 @@ public class LoginPage extends BasePage{
 
     public void clickLoginButton(){
         clickOn(loginButton);
+    }
+
+    public void checkInvalidCredentialsMessage(){
+        erroMessageSpan.shouldContainOnlyText("ERROR: Invalid email address. Lost your password?");
     }
 }

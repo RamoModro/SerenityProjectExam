@@ -21,10 +21,10 @@ public class SearchResultsPage extends BasePage {
     public boolean isProductInResults(String searchItem) {
         for (WebElementFacade element : listOfProducts) {
             if (!element.getText().contains(searchItem)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean openProduct(String name){

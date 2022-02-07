@@ -24,9 +24,9 @@ public class LoginTest extends BaseTest{
     @Test
     public void loginWithInValidEmailTest(){
         loginSteps.goToLogin();
-        loginSteps.enterCredentials("sdfds.fsfd@email.com", Constants.USER_PASS);
+        loginSteps.enterCredentials("asd@asd.asd", Constants.USER_PASS);
         loginSteps.clickLoginButton();
-        loginSteps.checkUserIsLoggedIn(Constants.USER_NAME);
+        loginSteps.checkNotLoggedIn();
     }
 
     @Test

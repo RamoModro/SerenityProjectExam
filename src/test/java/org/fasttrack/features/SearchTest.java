@@ -7,8 +7,8 @@ public class SearchTest extends BaseTest{
     @Test
     public void checkSearchResultContainsTheSearchedText(){
         loginSteps.navigateToHomePage();
-        searchSteps.executeSearch("Shirt");
-        searchSteps.checkSearchResultContainsTheSearchedText("Shirt");
+        searchSteps.executeSearch("T-Shirt");
+        searchSteps.checkSearchResultContainsTheSearchedText("T-Shirt");
     }
 
     @Test

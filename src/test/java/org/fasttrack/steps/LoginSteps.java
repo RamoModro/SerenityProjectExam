@@ -28,8 +28,13 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step
+    public void checkNotLoggedIn(){
+        loginPage.checkInvalidCredentialsMessage();
+    }
+
+    @Step
     public void clickLogOutLink(){
-        clickLogOutLink();
+        myAccountPage.clickLogOut();
     }
 
     @Step

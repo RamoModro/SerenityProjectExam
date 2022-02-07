@@ -1,6 +1,5 @@
 package org.fasttrack.features;
 
-import jnr.constants.Constant;
 import org.fasttrack.utils.Constants;
 import org.junit.Test;
 
